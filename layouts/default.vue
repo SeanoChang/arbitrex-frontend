@@ -1,9 +1,22 @@
 <template>
   <div>
-    <header>My Header</header>
+    <AppHeader />
     <main>
       <NuxtPage />
     </main>
-    <footer>My Footer</footer>
+    <AppFooter />
   </div>
 </template>
+
+<script>
+import AppHeader from "~/components/Header.vue";
+import AppFooter from "~/components/Footer.vue";
+
+export default {
+  name: "DefaultLayout",
+  components: {
+    AppHeader,
+    AppFooter,
+  },
+};
+</script>
