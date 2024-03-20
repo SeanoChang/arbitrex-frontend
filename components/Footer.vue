@@ -1,40 +1,46 @@
 <script setup lang="ts">
+const colorMode = useColorMode();
+
 const socailLinks = [
   {
     href: "https://t.me/data_dacl",
-    icon: "telegram-white.svg",
+    icon: "telegram",
     label: "Telegram",
   },
   {
     href: "https://www.instagram.com/data_dacl/",
-    icon: "instagram-white.svg",
+    icon: "instagram",
     label: "Instagram",
   },
   {
     href: "https://www.youtube.com/@dacapitalscom",
-    icon: "youtube-white.svg",
+    icon: "youtube",
     label: "Youtube",
   },
   {
     href: "https://twitter.com/dacapitals",
-    icon: "twitter-white.svg",
+    icon: "twitter",
     label: "Twitter",
   },
   {
     href: "https://www.facebook.com/dacapitals/",
-    icon: "facebook-white.svg",
+    icon: "facebook",
     label: "Facebook",
   },
 ];
 </script>
 
 <template>
-  <footer class="flex items-center justify-between p-4 bg-da-black">
+  <footer
+    class="flex items-center justify-between p-4 bg-white dark:bg-da-black"
+  >
     <!-- DA logo and trademark -->
     <div class="hidden sm:flex flex-col items-start justify-center">
       <span class="text-gray-400 text-sm"
         >Arbitrex, A Brand of
-        <a class="hover:underline hover:text-white" href="https://datatw.io/"
+        <a
+          class="hover:underline hover:text-gray-900 dark:hover:text-white"
+          href="https://datatw.io/"
           >DA Capital</a
         >. All rights reserved 2023-2024</span
       >
@@ -51,7 +57,14 @@ const socailLinks = [
         target="_blank"
         class="flex items-center justify-center p-2 text-da-white"
       >
-        <NuxtImg :src="`/icons/${link.icon}`" class="w-6 h-6" />
+        <NuxtImg
+          :src="
+            colorMode.value === 'dark'
+              ? `/icons/${link.icon}-white.svg`
+              : `/icons/${link.icon}.svg`
+          "
+          class="w-6 h-6"
+        />
       </a>
     </div>
   </footer>

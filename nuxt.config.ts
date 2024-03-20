@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: "", // color mode class suffix for tailwindcss darkmode
+    fallback: "dark", // fallback dark mode
   },
   image: {
     dir: "assets",

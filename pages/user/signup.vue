@@ -66,9 +66,7 @@ const validate = (state: any): FormError[] => {
     errors.push({ path: "email", message: "Required" }); // Required
   else if (!emailRegex.test(state.email))
     errors.push({ path: "email", message: "Invalid email address" }); // Invalid email
-  if (!state.password)
-    errors.push({ path: "password", message: "Required" }); // Required
-  else if (state.password?.length < 8)
+  if (state.password?.length < 8)
     errors.push({ path: "password", message: "Must be at least 8 characters" }); // Min length
   return errors;
 };
@@ -80,7 +78,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="relative flex-1 flex flex-col items-center justify-center">
+  <div class="relative flex-1 flex flex-col items-center justify-center pr-10">
     <!-- Link to home -->
     <NuxtLink to="/" class="absolute top-4 right-4">
       <UButton
@@ -99,7 +97,12 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       @submit="onSubmit"
     >
       <UFormGroup label="Email" name="email" class="w-full">
-        <UInput v-model="state.email" type="email" size="lg" />
+        <UInput
+          v-model="state.email"
+          type="email"
+          size="lg"
+          icon="i-heroicons-envelope"
+        />
       </UFormGroup>
 
       <UFormGroup label="Password" name="password" class="w-full">
@@ -155,7 +158,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UForm>
 
     <!-- Already have an account, link to signin page -->
-    <span class="text-sm text-gray-50">
+    <span class="text-sm text-gray-950 dark:text-gray-50">
       Already have an account?
       <NuxtLink
         to="/user/signin"
