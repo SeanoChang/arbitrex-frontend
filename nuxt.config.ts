@@ -26,6 +26,6 @@ export default defineNuxtConfig({
     classSuffix: "", // color mode class suffix for tailwindcss darkmode
   },
   image: {
-    dir: "assets/images",
+    dir: "assets",
   },
 });

@@ -9,7 +9,16 @@ export default {
     "./error.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "da-black": "#1A1917",
+        "da-white": "#FCFAEE",
+        "da-banana": "#EBC94C",
+      },
+      fontFamily: {
+        sans: ["Noto Sans TC", "sans-serif"],
+      },
+    },
   },
   plugins: [],
   darkMode: "class",
