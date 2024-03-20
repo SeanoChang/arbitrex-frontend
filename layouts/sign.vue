@@ -6,7 +6,7 @@
         class="flex flex-col items-center justify-center drop-shadow-lg shadow-white w-full space-y-2"
       >
         <NuxtImg
-          src="/da/dacapital-logo-landscape-white.png"
+          src="/images/da/dacapital-logo-landscape-white.png"
           alt="Logo"
           class="h-20 mr-2"
         />
