@@ -49,7 +49,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-  <div class="relative flex-1 flex flex-col items-center justify-center">
+  <div class="relative flex-1 flex flex-col items-center justify-center pr-10">
     <!-- Link to home -->
     <NuxtLink to="/" class="absolute top-4 right-4">
       <UButton
@@ -67,7 +67,12 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       @submit="onSubmit"
     >
       <UFormGroup label="Email" name="email" class="w-full">
-        <UInput v-model="state.email" type="email" size="lg" />
+        <UInput
+          v-model="state.email"
+          type="email"
+          size="lg"
+          icon="i-heroicons-envelope"
+        />
       </UFormGroup>
 
       <UFormGroup label="Password" name="password" class="w-full">
@@ -112,7 +117,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UForm>
 
     <!-- Don't have an account? Link to Signup page -->
-    <span class="text-sm text-gray-50">
+    <span class="text-sm text-gray-950 dark:text-gray-50">
       Don't have an account?
       <NuxtLink
         to="/user/signup"

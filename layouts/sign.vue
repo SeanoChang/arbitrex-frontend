@@ -1,12 +1,16 @@
 <template>
   <div class="w-full h-screen flex md:flex-row">
     <!-- Hide on small screens, show on medium screens and up -->
-    <div class="hidden md:flex md:flex-1 h-full">
+    <div class="hidden md:flex md:flex-1 h-full pl-10">
       <div
         class="flex flex-col items-center justify-center drop-shadow-lg shadow-white w-full space-y-2"
       >
         <NuxtImg
-          src="/images/da/dacapital-logo-landscape-white.png"
+          :src="
+            colorMode.value === 'dark'
+              ? '/images/da/dacapital-logo-landscape-white.png'
+              : '/images/da/dacapital-logo-landscape-black.png'
+          "
           alt="Logo"
           class="h-20 mr-2"
         />
@@ -19,14 +23,12 @@
   </div>
 </template>
 
-<script>
-import nightTime from "~/assets/images/unsplash/night-time.jpg";
+<script lang="ts">
 export default {
   name: "SignLayout",
-  data() {
-    return {
-      backgroundUrl: nightTime,
-    };
+  setup() {
+    const colorMode = useColorMode();
+    return { colorMode };
   },
 };
 </script>

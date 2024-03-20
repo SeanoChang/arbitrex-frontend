@@ -2,22 +2,20 @@
 import { ref } from "vue";
 
 const isOpen = ref(false);
+const colorMode = useColorMode();
 
 const links = [
   [
     {
       label: "Strategies",
-      icon: "i-heroicons-code-bracket-square",
       to: "/strategies",
     },
     {
       label: "Subscriptions",
-      icon: "i-heroicons-chart-bar",
       to: "/subscriptions",
     },
     {
       label: "Blogs",
-      icon: "i-heroicons-document-text",
       to: "/blogs",
     },
   ],
@@ -43,7 +41,7 @@ const links = [
 
 <template>
   <div
-    class="flex flex-row justify-between items-center p-3 sticky w-full bg-da-black"
+    class="flex flex-row justify-between items-center p-3 sticky w-full bg-white dark:bg-da-black"
   >
     <!-- Desktop Product Group -->
     <div class="hidden sm:flex flex-row justify-around items-center space-x-2">
@@ -51,8 +49,18 @@ const links = [
         to="/"
         class="flex flex-row justify-center items-center p-1 mx-1"
       >
-        <NuxtImg src="/images/da/logo-white.png" alt="Arbitrex" class="w-8" />
-        <h1 class="text-3xl font-semibold text-white">Arbitrex</h1>
+        <NuxtImg
+          :src="
+            colorMode.value === 'dark'
+              ? '/images/da/logo-white.png'
+              : '/images/da/logo-black.png'
+          "
+          alt="Arbitrex"
+          class="w-8"
+        />
+        <h1 class="text-3xl font-semibold text-black dark:text-white ml-1">
+          Arbitrex
+        </h1>
       </NuxtLink>
       <UButton
         v-for="(link, index) in links[0]"
@@ -65,14 +73,11 @@ const links = [
           class="flex flex-row justify-center items-center"
           :to="link.to"
         >
-          <UIcon
-            :name="link.icon"
-            class="w-5 h-5 bg-gray-400 group-hover:bg-gray-50 mr-1"
-            :class="{ 'bg-gray-50': $route.path === link.to }"
-          />
           <span
-            class="text-gray-400 group-hover:text-gray-50 text-base"
-            :class="{ 'text-gray-50': $route.path === link.to }"
+            class="text-gray-500 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-gray-50 text-base"
+            :class="{
+              'text-gray-900 dark:text-gray-50': $route.path === link.to,
+            }"
             >{{ link.label }}</span
           >
         </NuxtLink>
@@ -81,6 +86,7 @@ const links = [
 
     <!-- Desktop User Group -->
     <div class="hidden sm:flex flex-row justify-around items-center space-x-2">
+      <DarkModeSwitch />
       <UButton
         v-for="(link, index) in links[1]"
         :key="index"
@@ -89,7 +95,7 @@ const links = [
         :variant="link.variant || 'ghost'"
       >
         <NuxtLink
-          class="text-gray-400 group-hover:text-gray-50"
+          class="group-hover:text-gray-900 dark:group-hover:text-gray-50"
           :class="{ 'text-gray-50': link.label === 'Sign Up' }"
           :to="link.to"
           >{{ link.label }}</NuxtLink
@@ -103,8 +109,18 @@ const links = [
         to="/"
         class="flex flex-row justify-center items-center p-1 mx-1"
       >
-        <NuxtImg src="/images/da/logo-white.png" alt="Arbitrex" class="w-8" />
-        <h1 class="text-3xl font-semibold text-white">Arbitrex</h1>
+        <NuxtImg
+          :src="
+            colorMode.value === 'dark'
+              ? '/images/da/logo-white.png'
+              : '/images/da/logo-black.png'
+          "
+          alt="Arbitrex"
+          class="w-8"
+        />
+        <h1 class="text-3xl font-semibold text-black dark:text-white ml-1">
+          Arbitrex
+        </h1>
       </NuxtLink>
       <UButton
         variant="ghost"
@@ -115,20 +131,25 @@ const links = [
       />
 
       <USlideover v-model="isOpen">
-        <div class="p-8 flex-1 space-y-8 relative text-3xl text-gray-400">
+        <div
+          class="p-8 flex-1 relative text-3xl text-gray-500 dark:text-gray-400"
+        >
           <UButton
-            variant="ghost"
             class="absolute top-5 right-5"
-            icon="i-heroicons-x-mark-16-solid"
+            icon="i-heroicons-x-mark-20-solid"
             color="gray"
+            variant="ghost"
             @click="isOpen = false"
           />
-          <div class="flex flex-col space-y-8">
+          <div class="flex flex-col space-y-8 pb-8">
             <NuxtLink
               v-for="(link, index) in links[0]"
               :key="index"
               :to="link.to"
-              :class="{ 'text-gray-50 underline': $route.path === link.to }"
+              :class="{
+                'text-gray-900 dark:text-gray-50 underline':
+                  $route.path === link.to,
+              }"
               @click="isOpen = false"
               >{{ link.label }}</NuxtLink
             >
@@ -138,7 +159,10 @@ const links = [
               v-for="(link, index) in links[1]"
               :key="index"
               :to="link.to"
-              :class="{ 'text-gray-50 underline': $route.path === link.to }"
+              :class="{
+                'text-gray-900 dark:text-gray-50 underline':
+                  $route.path === link.to,
+              }"
               @click="isOpen = false"
               >{{ link.label }}</NuxtLink
             >
@@ -150,7 +174,12 @@ const links = [
 </template>
 
 <script lang="ts">
+import DarkModeSwitch from "~/components/DarkModeSwitch.vue";
+
 export default {
   name: "AppHeader",
+  components: {
+    DarkModeSwitch,
+  },
 };
 </script>
