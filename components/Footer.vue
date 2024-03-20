@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const colorMode = useColorMode();
+const { isDark } = useDarkMode();
 
 const socailLinks = [
   {
@@ -50,22 +50,24 @@ const socailLinks = [
     <div
       class="w-full sm:w-auto flex flex-row items-center justify-center space-x-2"
     >
-      <a
+      <NuxtLink
         v-for="(link, index) in socailLinks"
         :key="index"
         :href="link.href"
         target="_blank"
         class="flex items-center justify-center p-2 text-da-white"
       >
-        <NuxtImg
-          :src="
-            colorMode.value === 'dark'
-              ? `/icons/${link.icon}-white.svg`
-              : `/icons/${link.icon}.svg`
-          "
-          class="w-6 h-6"
-        />
-      </a>
+        <ColorScheme placeholder="" tag="span">
+          <NuxtImg
+            :src="
+              isDark
+                ? `/icons/${link.icon}-white.svg`
+                : `/icons/${link.icon}.svg`
+            "
+            class="w-6 h-6"
+          />
+        </ColorScheme>
+      </NuxtLink>
     </div>
   </footer>
 </template>
