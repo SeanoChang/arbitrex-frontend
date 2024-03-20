@@ -2,7 +2,7 @@
 import { ref } from "vue";
 
 const isOpen = ref(false);
-const colorMode = useColorMode();
+const { isDark } = useDarkMode();
 
 const links = [
   [
@@ -49,15 +49,15 @@ const links = [
         to="/"
         class="flex flex-row justify-center items-center p-1 mx-1"
       >
-        <NuxtImg
-          :src="
-            colorMode.value === 'dark'
-              ? '/images/da/logo-white.png'
-              : '/images/da/logo-black.png'
-          "
-          alt="Arbitrex"
-          class="w-8"
-        />
+        <ColorScheme placeholder="" tag="span" class="w-8">
+          <NuxtImg
+            :src="
+              isDark ? '/images/da/logo-white.png' : '/images/da/logo-black.png'
+            "
+            alt="Arbitrex"
+            class="w-8"
+          />
+        </ColorScheme>
         <h1 class="text-3xl font-semibold text-black dark:text-white ml-1">
           Arbitrex
         </h1>
@@ -109,15 +109,15 @@ const links = [
         to="/"
         class="flex flex-row justify-center items-center p-1 mx-1"
       >
-        <NuxtImg
-          :src="
-            colorMode.value === 'dark'
-              ? '/images/da/logo-white.png'
-              : '/images/da/logo-black.png'
-          "
-          alt="Arbitrex"
-          class="w-8"
-        />
+        <ColorScheme placeholder="" tag="span" class="w-8">
+          <NuxtImg
+            :src="
+              isDark ? '/images/da/logo-white.png' : '/images/da/logo-black.png'
+            "
+            alt="Arbitrex"
+            class="w-8"
+          />
+        </ColorScheme>
         <h1 class="text-3xl font-semibold text-black dark:text-white ml-1">
           Arbitrex
         </h1>

@@ -5,15 +5,17 @@
       <div
         class="flex flex-col items-center justify-center drop-shadow-lg shadow-white w-full space-y-2"
       >
-        <NuxtImg
-          :src="
-            colorMode.value === 'dark'
-              ? '/images/da/dacapital-logo-landscape-white.png'
-              : '/images/da/dacapital-logo-landscape-black.png'
-          "
-          alt="Logo"
-          class="h-20 mr-2"
-        />
+        <ColorScheme placeholder="" tag="span" class="h-20">
+          <NuxtImg
+            :src="
+              colorMode.value === 'dark'
+                ? '/images/da/dacapital-logo-landscape-white.png'
+                : '/images/da/dacapital-logo-landscape-black.png'
+            "
+            alt="Logo"
+            class="h-20 mr-2"
+          />
+        </ColorScheme>
         <span> Bridge the unreal and real. </span>
       </div>
     </div>
